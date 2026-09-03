@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>odenseanerne. — kommer snart</title>
+<meta name="description" content="odenseanerne. åbner snart. Merch med hjerte for Odense.">
+
+<!-- Favicon: o. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkJGQkZBIi8+PHBhdGggZmlsbD0iIzBBMEEwQSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMTMgOGE4IDggMCAxIDAgMCAxNiA4IDggMCAwIDAgMC0xNlptMCA0LjZhMy40IDMuNCAwIDEgMSAwIDYuOCAzLjQgMy40IDAgMCAxIDAtNi44WiIvPjxyZWN0IHg9IjIyLjUiIHk9IjE5IiB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMEEwQTBBIi8+PC9zdmc+">
+
+<!-- Geist + Geist Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Geist+Mono&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --bg:#FBFBFA;
+    --blue:#052BA8;
+    --muted:#6B6B6B;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Geist", -apple-system, system-ui, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100svh;padding:32px;
+  }
+
+  .card{max-width:560px;width:100%;text-align:center}
+
+  /* Ordmærke */
+  .wordmark{
+    font-size:clamp(26px,6vw,40px);
+    font-weight:700;letter-spacing:-.02em;line-height:1;
+    margin:0 0 clamp(28px,5vw,40px);
+  }
+  .wordmark .sq{
+    display:inline-block;width:.14em;height:.14em;
+    background:var(--ink);vertical-align:baseline;margin-left:.04em;
+  }
+
+  h1{
+    font-size:clamp(34px,7vw,60px);
+    font-weight:800;letter-spacing:-.03em;line-height:1.02;
+    margin:0 0 18px;
+  }
+
+  .lead{
+    font-size:clamp(15px,2.4vw,17px);
+    color:var(--muted);line-height:1.6;
+    max-width:42ch;margin:0 auto clamp(30px,5vw,40px);
+  }
+
+  .links{
+    font-family:"Geist Mono", ui-monospace, Consolas, monospace;
+    font-size:14px;letter-spacing:.01em;
+    display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;
+  }
+  .links a{color:var(--ink);text-decoration:none}
+  .links a:hover{color:var(--blue)}
+  /* Eneste accent: lille blå firkant som adskiller */
+  .sep{display:inline-block;width:6px;height:6px;background:var(--blue)}
+
+  @media (max-width:420px){
+    .links{gap:8px}
+    .sep{display:none}
+    .links a{display:block}
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <p class="wordmark">odenseanerne<span class="sq" aria-hidden="true"></span></p>
+
+    <h1>Kommer snart</h1>
+
+    <p class="lead">
+      Vi er ved at få det hele på plads. Følg med på Instagram imens —
+      så er du klar, når der åbnes.
+    </p>
+
+    <div class="links">
+      <a href="https://instagram.com/odenseanerne" target="_blank" rel="noopener">@odenseanerne</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="mailto:info@odenseanerne.dk">info@odenseanerne.dk</a>
+    </div>
+  </main>
+</body>
+</html>
