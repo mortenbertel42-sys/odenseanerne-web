@@ -1,0 +1,8 @@
+# MIDLERTIDIG: viser "kommer snart"-siden for alle besøgende.
+# Slet denne fil og push for at få det fulde site (index.html) live igen.
+
+[[redirects]]
+  from = "/*"
+  to = "/kommer-snart.html"
+  status = 200
+  force = true
