@@ -44,7 +44,43 @@ html{scroll-behavior:smooth}
 #lb button{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid #3A3A3A;border-radius:8px;background:transparent;color:#FBFBFA;font-family:"Geist Mono",monospace;font-size:18px;line-height:1;cursor:pointer}
 #lb button:hover{border-color:#FBFBFA}
 body.lb-open{overflow:hidden}
+
+/* Cookie-samtykke */
+#cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;background:#FFFFFF;border-top:1px solid #E7E7E4;padding:20px 24px}
+#cookie-banner.open{display:block}
+#cookie-banner .cb-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between}
+#cookie-banner p{margin:0;font-size:14px;line-height:1.55;color:#3A3A3A;max-width:64ch}
+.cb-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cb-btn{height:48px;padding:0 24px;border-radius:14px;font-family:"Geist",sans-serif;font-size:16px;font-weight:500;cursor:pointer;white-space:nowrap}
+.cb-accept{border:none;background:#0A0A0A;color:#FBFBFA}
+.cb-accept:hover{background:#052BA8}
+.cb-decline{border:1px solid #E7E7E4;background:transparent;color:#0A0A0A}
+.cb-decline:hover{border-color:#052BA8;color:#052BA8}
+@media (max-width:560px){
+  #cookie-banner .cb-inner{flex-direction:column;align-items:stretch}
+  .cb-actions{width:100%}
+  .cb-btn{flex:1}
+}
 </style>
+
+<!-- Meta Pixel — funktionen indlæser og affyrer først pixlen, når besøgende har
+     klikket "Accepter" i cookie-bannen nederst på siden (eller tidligere har gjort det) -->
+<script>
+function metaPixelInit(){
+  if (window.__metaPixelLoaded) return;
+  window.__metaPixelLoaded = true;
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1077578228108058');
+  fbq('track', 'PageView');
+}
+</script>
 </head>
 <body>
 
@@ -174,8 +210,18 @@ body.lb-open{overflow:hidden}
 
 <footer style="max-width:1120px;margin:0 auto;padding:32px 24px 64px;border-top:1px solid #E7E7E4;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline">
 <span class="wordmark" style="font-size:21px;font-weight:600;letter-spacing:-.02em">odenseanerne<span style="display:inline-block;width:.15em;height:.15em;background:currentColor;margin-left:.05em"></span></span>
-<span style="font-size:14px;line-height:1.55;color:#6B6B6B">odenseanerne<span style="display:inline-block;width:.17em;height:.17em;background:currentColor;margin-left:.05em"></span> · CVR 46597389 · info@odenseanerne.dk · @odenseanerne · <a href="salgsbetingelser.html">Salgsbetingelser</a></span>
+<span style="font-size:14px;line-height:1.55;color:#6B6B6B">odenseanerne<span style="display:inline-block;width:.17em;height:.17em;background:currentColor;margin-left:.05em"></span> · CVR 46597389 · info@odenseanerne.dk · @odenseanerne · <a href="salgsbetingelser.html">Salgsbetingelser</a> · <a href="#" id="cookie-settings-link">Cookies</a></span>
 </footer>
+
+<div id="cookie-banner" role="region" aria-label="Cookie-samtykke">
+<div class="cb-inner">
+<p>Vi bruger Meta Pixel til at se, om besøg her fører til bestillinger. Det er slukket, indtil du siger ja.</p>
+<div class="cb-actions">
+<button type="button" class="cb-btn cb-decline" id="cookie-decline">Nej tak</button>
+<button type="button" class="cb-btn cb-accept" id="cookie-accept">Accepter</button>
+</div>
+</div>
+</div>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Forstørret billede">
 <button type="button" aria-label="Luk">&times;</button>
@@ -212,6 +258,44 @@ body.lb-open{overflow:hidden}
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && lb.classList.contains('open')) close();
   });
+})();
+</script>
+
+<script>
+(function(){
+  var KEY = 'oa_cookie_consent'; // 'accepted' | 'declined'
+  var banner = document.getElementById('cookie-banner');
+  var acceptBtn = document.getElementById('cookie-accept');
+  var declineBtn = document.getElementById('cookie-decline');
+  var settingsLink = document.getElementById('cookie-settings-link');
+
+  function getConsent(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function setConsent(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+  function show(){ banner.classList.add('open'); }
+  function hide(){ banner.classList.remove('open'); }
+
+  var consent = getConsent();
+  if (consent === 'accepted') {
+    metaPixelInit();
+  } else if (consent !== 'declined') {
+    show();
+  }
+
+  acceptBtn.addEventListener('click', function(){
+    setConsent('accepted');
+    hide();
+    metaPixelInit();
+  });
+  declineBtn.addEventListener('click', function(){
+    setConsent('declined');
+    hide();
+  });
+  if (settingsLink) {
+    settingsLink.addEventListener('click', function(e){
+      e.preventDefault();
+      show();
+    });
+  }
 })();
 </script>
 
