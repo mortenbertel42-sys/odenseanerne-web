@@ -32,6 +32,7 @@ html{scroll-behavior:smooth}
 .bestil:hover{background:#0A0A0A;color:#FBFBFA}
 .wordmark{white-space:nowrap}
 .zoom{cursor:zoom-in}
+behold-widget{display:block;width:100%}
 @media (max-width:560px){
   .site-header{flex-wrap:wrap;gap:12px}
   .site-header nav{width:100%;gap:20px}
@@ -178,6 +179,19 @@ function metaPixelInit(){
 <img class="zoom" src="fotos/kasket-sort-voksen-b-1.jpg" alt="Sort kasket i byen" loading="lazy" decoding="async" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
 </section>
 
+<section id="instagram" style="max-width:1120px;margin:0 auto;padding:0 24px 96px">
+<div style="border-top:1px solid #E7E7E4;padding-top:32px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline">
+<div>
+<span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6B6B6B">Instagram</span>
+<h2 style="font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:600;margin:8px 0 0">@odenseanerne</h2>
+</div>
+<a href="https://instagram.com/odenseanerne" target="_blank" rel="noopener" style="font-family:'Geist Mono',monospace;font-size:14px;color:#6B6B6B">Følg på Instagram →</a>
+</div>
+<div style="margin-top:32px">
+<behold-widget feed-id="aHa3BmOIu4Q7drT9OUnm"></behold-widget>
+</div>
+</section>
+
 <section id="koeb" style="background:#0A0A0A;color:#FBFBFA;padding:96px 0">
 <div style="max-width:1120px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
 <div>
@@ -300,6 +314,15 @@ function metaPixelInit(){
     });
   }
 })();
+</script>
+
+<!-- Behold — Instagram-feed (@odenseanerne), indlæses uden cookie-gate -->
+<script>
+  (() => {
+    if(window.__bhldScript)return;window.__bhldScript=true;
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
+  })();
 </script>
 
 </body>
